@@ -10,11 +10,11 @@ Example: AI helped with file I/O error handling logic in save_character function
 def create_character(name, character_class):
   
     valid_classes = ["Warrior", "Mage","Rogue","Cleric"]
-    level = 1
-    strength, magic, health = calculate_stats(character_class, level)
-    
     if character_class not in valid_classes:
         return None
+    level = 1
+    strength, magic, health = calculate_stats(character_class, level)
+
     
     character = {"name":name.strip(), "class":character_class, "level":1,"strength":strength,"magic":magic,"health":health,"gold": 100}
     return character
