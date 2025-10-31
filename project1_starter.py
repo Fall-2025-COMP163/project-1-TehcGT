@@ -91,22 +91,15 @@ def load_character(filename):
         return character
 
 def display_character(character):
-    """
-    Prints formatted character sheet
-    Returns: None (prints to console)
-    
-    Example output:
-    === CHARACTER SHEET ===
-    Name: Aria
-    Class: Mage
-    Level: 1
-    Strength: 5
-    Magic: 15
-    Health: 80
-    Gold: 100
-    """
-    # TODO: Implement this function
-    pass
+    print("\n=== CHARACTER SHEET ===")
+    print(f"Name: {character.get("name", "")}")
+    print(f"Class: {character.get("class", "")}")
+    print(f"Level: {character.get("level", 0)}")
+    print(f"Strength: {character.get("strength", 0)}")
+    print(f"Magic: {character.get("magic", 0)}")
+    print(f"Health: {character.get("health", 0)}")
+    print(f"Gold: {character.get("gold", 0)}")
+
 
 def level_up(character):
     """
