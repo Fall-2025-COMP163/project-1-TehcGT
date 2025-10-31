@@ -105,10 +105,13 @@ def display_character(character):
 def level_up(character):
     character["level"] +=1
     strength,magic,health = calculate_stats(character["class"], character["level"])
+    character["strength"] = strength
+    character["magic"] = magic
+    character["health"] = health
     print(f"\n{character["name"]} leveled up to Level {character["level"]}!")
 
 
-# Main program area (optional - for testing your functions)
+
 if __name__ == "__main__":
     print("=== CHARACTER CREATOR ===")
     print("Test your functions here!")
