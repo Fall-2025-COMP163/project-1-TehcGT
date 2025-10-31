@@ -53,9 +53,10 @@ def calculate_stats(character_class, level):
     strength += (level - 1) * 3
     magic += (level - 1) * 2
     health += (level - 1) * 10
+    #purpose of the 3 codes above me is to make my character stronger after level 1
     return strength, magic, health
 
-def save_character(character, filename):
+def save_character(character, filename): #Main purpose is to take the character's data and saves it to a text file on my hard drive
     import os
     if character == None:
         return False
@@ -64,7 +65,7 @@ def save_character(character, filename):
     if folder and not os.path.exists(folder):
         return False
     
-    with open(filename,"w", encoding="utf-8") as f:
+    with open(filename,"w", encoding="utf-8") as f: #I used a with because mainly because I knew I would forget to add the ".close()" function when addong all these lines of code
         f.write(f"Character Name: {character["name"]}\n")
         f.write(f"Class: {character["class"]}\n")
         f.write(f"Level: {character["level"]}\n")
@@ -79,8 +80,8 @@ def load_character(filename):
     if not os.path.exists(filename):
         return None
     
-    f = open(filename, "r", encoding="utf-8")
-    lines = f.readlines()
+    f = open(filename, "r", encoding="utf-8") #encoding = "utf-8" was included because I used copilot and Gemini which told me that it handles special characters like letters with an accent line
+    lines = f.readlines() #Reading the lines to a list for branching
     f.close()
 
     character = {}
@@ -90,13 +91,16 @@ def load_character(filename):
 
         key, value = line.strip().split(":", 1)
         key = key.strip().lower().replace("character ", "")
+
         value = value.strip()
+
         if value.isdigit():
             value = int(value)
         character[key] = value
 
     if len(character) == 0:
         return None
+    
     return character
 
 def display_character(character):
