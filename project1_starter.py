@@ -72,16 +72,17 @@ def load_character(filename):
         return None
     
     f = open(filename, "r")
-    line = f.readlines()
+    lines = f.readlines()
     f.close()
 
     character = {}
-    for l in line:  
+    for line in lines:  
         if ":" not in line:
             continue
 
         key,value = line.strip().split(":", 1)
-        key = key.lower().replace("character ", "")
+        key = key.strip().lower().replace("character ", "")
+        value.strip()
         if value.isdigit():
             value = int(value)
         character[key] = value
@@ -105,14 +106,7 @@ def level_up(character):
     character["level"] +=1
     strength,magic,health = calculate_stats(character["class"], character["level"])
     print(f"\n{character["name"]} leveled up to Level {character["level"]}!")
-    """
-    Increases character level and recalculates stats
-    Modifies the character dictionary directly
-    Returns: None
-    """
-    # TODO: Implement this function
-    # Remember to recalculate stats for the new level
-    pass
+
 
 # Main program area (optional - for testing your functions)
 if __name__ == "__main__":
