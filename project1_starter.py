@@ -67,13 +67,28 @@ def save_character(character, filename):
     return True
 
 def load_character(filename):
-    """
-    Loads character from text file
-    Returns: character dictionary if successful, None if file not found
-    """
-    # TODO: Implement this function
-    # Remember to handle file not found errors
-    pass
+    import os
+    if not os.path.exists(filename):
+        return None
+    
+    f = open(filename, "r")
+    line = f.readlines()
+    f.close()
+
+    character = {}
+    for l in line:  
+        if ":" not in line:
+            continue
+
+        key,value = line.strip().split(":", 1)
+        key = key.lower().replace("character ", "")
+        if value.isdigit():
+            value = int(value)
+        character[key] = value
+
+        if len(character) == 0:
+            return None
+        return character
 
 def display_character(character):
     """
