@@ -21,16 +21,7 @@ def create_character(name, character_class):
 
 
 def calculate_stats(character_class, level):
-    """
-    Calculates base stats based on class and level
-    Returns: tuple of (strength, magic, health)
     
-    Design your own formulas! Ideas:
-    - Warriors: High strength, low magic, high health
-    - Mages: Low strength, high magic, medium health  
-    - Rogues: Medium strength, medium magic, low health
-    - Clerics: Medium strength, high magic, high health
-    """
     character_class = character_class.upper()
     strength = 0
     magic = 0
@@ -57,22 +48,23 @@ def calculate_stats(character_class, level):
     return strength, magic, health
 
 def save_character(character, filename):
-    """
-    Saves character to text file in specific format
-    Returns: True if successful, False if error occurred
+    import os
+    if character == None:
+        return False
     
-    Required file format:
-    Character Name: [name]
-    Class: [class]
-    Level: [level]
-    Strength: [strength]
-    Magic: [magic]
-    Health: [health]
-    Gold: [gold]
-    """
-    # TODO: Implement this function
-    # Remember to handle file errors gracefully
-    pass
+    folder = os.path.dirname(filename)
+    if folder and not os.path.exists(folder):
+        return False
+    
+    with open(filename,"w") as f:
+        f.write(f"Character Name: {character["name"]}\n")
+        f.write(f"Class: {character["class"]}\n")
+        f.write(f"Level: {character["level"]}\n")
+        f.write(f"Strength: {character["strength"]}\n")
+        f.write(f"Magic: {character["magic"]}\n")
+        f.write(f"Health: {character["health"]}\n")
+        f.write(f"Gold: {character["gold"]}\n")
+    return True
 
 def load_character(filename):
     """
