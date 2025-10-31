@@ -18,9 +18,7 @@ def create_character(name, character_class):
     
     character = {"name":name.strip(), "class":character_class, "level":1,"strength":strength,"magic":magic,"health":health,"gold": 100}
     return character
-    # TODO: Implement this function
-    # Remember to use calculate_stats() function for stat calculation
-    pass
+
 
 def calculate_stats(character_class, level):
     """
@@ -33,9 +31,30 @@ def calculate_stats(character_class, level):
     - Rogues: Medium strength, medium magic, low health
     - Clerics: Medium strength, high magic, high health
     """
-    # TODO: Implement this function
-    # Return a tuple: (strength, magic, health)
-    pass
+    character_class = character_class.upper()
+    strength = 0
+    magic = 0
+    health = 50
+
+    if character_class == "ROGUE":
+        strength += 50
+        magic += 45
+        health += 30
+    elif character_class == "CLERIC":
+        strength += 55
+        magic += 90
+        health += 95
+    elif character_class == "WARRIOR":
+        strength += 95
+        magic += 30
+        health += 90
+    elif character_class == "MAGE":
+        strength += 30
+        magic += 100
+        health += 55
+    else:
+        print("invalid trope")
+    return strength, magic, health
 
 def save_character(character, filename):
     """
