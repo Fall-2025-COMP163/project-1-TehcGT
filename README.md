@@ -97,3 +97,5 @@ Modifying protected files will result in automatic academic integrity violation
 Implementation (70%): Function correctness, file operations, error handling
 
 Interview (30%): Code explanation and live coding challenge
+
+The game is a high-fantasy RPG set in a world shattered by a magical cataclysm. The user is an adventurer choosing from 4 different archetypes which are, Warrior, Mage, Rogue, or Cleric. This has players create these heroes to get their stats and save their progress. The core design was to give each class a different feeling like how the Warrior is a tank with a lot of health and the mage being a sorcerer with high magic. the simple scaling system was chosen so the class' unique base stats stay the most important thing. I used AI mainly to debug my code and find errors in my code to see why I was not passing the test case. CoPilot and Google Gemini were the main AI platforms I have been using.
