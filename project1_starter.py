@@ -61,7 +61,7 @@ def save_character(character, filename):
     if folder and not os.path.exists(folder):
         return False
     
-    with open(filename,"w") as f:
+    with open(filename,"w",encoding='utf-8') as f:
         f.write(f"Character Name: {character["name"]}\n")
         f.write(f"Class: {character["class"]}\n")
         f.write(f"Level: {character["level"]}\n")
