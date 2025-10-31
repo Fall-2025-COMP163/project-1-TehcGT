@@ -12,6 +12,10 @@ def create_character(name, character_class):
     valid_classes = ["Warrior", "Mage","Rogue","Cleric"]
     if character_class not in valid_classes:
         return None
+    
+    character_name = ""
+    if name is not None:
+        character_name = name.strip()
     level = 1
     strength, magic, health = calculate_stats(character_class, level)
 
@@ -76,7 +80,7 @@ def load_character(filename):
     if not os.path.exists(filename):
         return None
     
-    f = open(filename, "r")
+    f = open(filename, "r", encoding='utf-8')
     lines = f.readlines()
     f.close()
 
