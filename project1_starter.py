@@ -20,7 +20,7 @@ def create_character(name, character_class):
     strength, magic, health = calculate_stats(character_class, level)
 
     
-    character = {"name":name.strip(), "class":character_class, "level":1,"strength":strength,"magic":magic,"health":health,"gold": 100}
+    character = {"name":character_name.strip(), "class":character_class, "level":1,"strength":strength,"magic":magic,"health":health,"gold": 100}
     return character
 
 
@@ -65,7 +65,7 @@ def save_character(character, filename):
     if folder and not os.path.exists(folder):
         return False
     
-    with open(filename,"w",encoding='utf-8') as f:
+    with open(filename,"w", encoding="utf-8") as f:
         f.write(f"Character Name: {character["name"]}\n")
         f.write(f"Class: {character["class"]}\n")
         f.write(f"Level: {character["level"]}\n")
@@ -80,7 +80,7 @@ def load_character(filename):
     if not os.path.exists(filename):
         return None
     
-    f = open(filename, "r", encoding='utf-8')
+    f = open(filename, "r", encoding="utf-8")
     lines = f.readlines()
     f.close()
 
@@ -89,16 +89,16 @@ def load_character(filename):
         if ":" not in line:
             continue
 
-        key,value = line.strip().split(":", 1)
+        key, value = line.strip().split(":", 1)
         key = key.strip().lower().replace("character ", "")
-        value.strip()
+        value = value.strip()
         if value.isdigit():
             value = int(value)
         character[key] = value
 
-        if len(character) == 0:
-            return None
-        return character
+    if len(character) == 0:
+        return None
+    return character
 
 def display_character(character):
     print("\n=== CHARACTER SHEET ===")
