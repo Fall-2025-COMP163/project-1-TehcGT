@@ -45,6 +45,11 @@ def calculate_stats(character_class, level):
         health += 55
     else:
         print("invalid trope")
+
+
+    strength += (level - 1) * 3
+    magic += (level - 1) * 2
+    health += (level - 1) * 10
     return strength, magic, health
 
 def save_character(character, filename):
